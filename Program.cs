@@ -17,7 +17,7 @@ namespace Car_Dealer_Windows_Form
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new DealerMaster());
         }
     }
 }
