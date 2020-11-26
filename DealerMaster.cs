@@ -14,7 +14,7 @@ namespace Car_Dealer_Windows_Form
 {
     public partial class DealerMaster : Form
     {
-        static string selectedCar;
+        static string selectedCar,customerName,customerComment;
         static int selectedCarIndex;
         JObject carsInfoDump = JObject.Parse(File.ReadAllText(@"cars.json"));
 
@@ -46,6 +46,25 @@ namespace Car_Dealer_Windows_Form
             displayOrigin.Text = (string)carsInfoDump["cars"][selectedCarIndex]["Origin"];
             displayWeightInPounds.Text = (string)carsInfoDump["cars"][selectedCarIndex]["Weight_in_lbs"];
             displayYear.Text = (string)carsInfoDump["cars"][selectedCarIndex]["Year"];
+
+        }
+
+        private void btSubmit_Click(object sender, EventArgs e)
+        {
+            customerName = tbCustomerName.Text;
+            customerComment = tbComment.Text;
+            tbComment.Clear();
+            tbCustomerName.Clear();
+            tbContactNumber.Clear();
+            tbEmail.Clear();
+
+            StreamWriter sw = new StreamWriter(customerName+ ".txt");
+            sw.WriteLine("Comment : \n" +customerComment  );
+            MessageBox.Show("Your Precious Feedback is noted\nThank you!");
+            sw.Flush();
+            sw.Close();
+
+
 
         }
     }
